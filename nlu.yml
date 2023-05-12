@@ -1,0 +1,110 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+
+- intent: ask_about_bot
+  examples: |
+    - what are you
+    - tell me about yourself
+    - who are you
+
+- intent: about_creator
+  examples: |
+    - who created you
+    - who made you
+    - who is your creator
+
+- intent: thanks
+  examples: | 
+    - thanks!
+    - thank you!
+    - good looking out
+    - i appreciate
+
+- intent: about_luke_story
+  examples: |
+    -what is Luke's past?
+    -tell me about your creator
+    -can you give me luke's story?
+    -luke's story
+    -luke's past
+    -luke past
+    -luke narrative
+    -narrative story
+    -child hood
+  
+- intent: lukes_interests
+  examples: |
+    -what are luke's interests?
+    -hobbies?
+    -what are luke's passions?
+    -what interest's Luke?
+    -What else is your creator into?
+  
+- intent: experience
+  examples: |
+    -what is Luke's Experience?
+    -work Experience?
+    -where has Luked Work?
+    -what kind of jobs has luke had?
+    -what type of work, does luke do?
+    -work history?
+    -places luke's worked?
+
+- intent: bread_experience
+  examples: |
+    - what was Bread like?
+    - what did Luke do at Bread Financial?
+    - bread Financial?
+    - what was Luke's role at Bread Financial?
+
+- intent: acp_experience
+  examples: |
+    - what is Arlington Computer Products?
+    - what did Luke do for Arlington Computer Products?
+    - arlington Computer Products?
+    - what was Luke's role at Arlington Computer Products?
+    - discover bank?
+
+- intent: cardinal_experience
+  examples: |
+    - what was Cardinal Health like?
+    - what did Luke do at Cardinal health?
+    - cardinal Health?
+    - what was Luke's role at cardinal health?
+
+- intent: retail_experience
+  examples: |
+    - limited brands?
+    - express llc?
+    - retail IT experience
+    - what was Express like?
+    - what was Limited Brands like?
+    - what did Luke do at Limited Brands?
+    - what did Luke do at Express LLC?
+    - Express LLC?
+    - what was Luke's role at Limited Brands?
+    - what was Luke's role at Express?
+
+- intent: nonit_experience
+  examples: |
+    - What are Luke's non-it jobs?
+    - culinary career?
+    - other jobs?
+    - other positions?
+    - non-it jobs?
+
+- intent: start_session
+  examples: |
+    - /start_session

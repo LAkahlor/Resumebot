@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name</title>
+    <style>
+        body {
+            font-family: Futura Book;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #f0f0f0;
+            margin-top: 50px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #ccc;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .header-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #000;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .chatbox {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #333;
+            border-radius: 30px;
+        }
+
+        .chat-input {
+            width: calc(100% - 90px);
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: #333;
+            color: #f0f0f0;
+            border-radius: 30px;
+        }
+
+        .chat-submit {
+            width: 80px;
+            background-color: #00ff6a;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            border-radius: 30px;
+        }
+
+        .user-message {
+            text-align: right;
+            font-weight: bold;
+            color: #d3d3d3;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #32cd32;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Luke Kahlor - IT Professional</h1>
+        <p>Thank you for checking out my humble projects. </p>
+    </div>
+    
+    <div class="chat-container">
+        <div class="chatbox" id="chatbox"></div>
+        <input class="chat-input" id="message" type="text" placeholder="Type your message here...">
+        <button class="chat-submit" id="chatSubmit">Send</button>
+    </div>
+    <script>
+  document.getElementById("chatSubmit").addEventListener("click", sendMessage);
+    // Allow 'Enter' key to trigger sendMessage function
+    document.getElementById("message").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    function sendMessage(message) {
+        var inputField = document.getElementById("message");
+        var message = message || inputField.value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:5005/webhooks/rest/webhook");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({
+            message: message
+        }));
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.length > 0 && response[0].text) {
+                    var chatbox = document.getElementById("chatbox");
+
+                    // Add the "Reader:" prefix to the user input
+                    var userMessage = document.createElement("div");
+                    userMessage.className = "chat-message user-message";
+                    userMessage.innerHTML = "Reader: " + message;
+                    userMessage.style.color = "yellow";
+                    chatbox.appendChild(userMessage);
+
+                    var botMessage = document.createElement("div");
+                    botMessage.className = "chat-message bot-message";
+                    botMessage.innerHTML = response[0].text;
+                    chatbox.appendChild(botMessage);
+
+                    // Clear the input field
+                    inputField.value = "";
+                } else {
+                    console.log("Error: Empty response or missing text property");
+                }
+            } else {
+                console.log("Error: " + xhr.status);
+            }
+        };
+    }
+
+    // Send initial 'Hello' message when page loads
+    window.onload = function() {
+        sendMessage("Hello");
+    }
+</script>
+</body>
+</html>

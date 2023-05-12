@@ -1,0 +1,68 @@
+version: "3.1"
+
+rules:
+- rule: Say hello when conversation starts
+  steps:
+  - action: action_session_start
+  - action: action_greet_user
+
+
+- rule: Say hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: About Creator
+  steps:
+  - intent: about_creator
+  - action: utter_about_creator
+
+- rule: thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+- rule: About Luke's Story
+  steps:
+  - intent: about_luke_story
+  - action: utter_luke_story
+
+- rule: lukes interests
+  steps: 
+  - intent: lukes_interests
+  - action: utter_luke_interests
+
+- rule: lukes experience
+  steps:
+  - intent: experience
+  - action: utter_experience
+
+- rule: bread_experience
+  steps:
+  - intent: bread_experience
+  - action: utter_bread_experience
+
+- rule: acp_experience
+  steps:
+  - intent: acp_experience
+  - action: utter_acp_experience
+
+- rule: cardinal_experience
+  steps:
+  - intent: cardinal_experience
+  - action: utter_cardinal_experience
+
+- rule: retail_experience
+  steps:
+  - intent: retail_experience
+  - action: utter_retail_experience
+
+- rule: nonit_experience
+  steps:
+  - intent: nonit_experience
+  - action: utter_nonit_experience

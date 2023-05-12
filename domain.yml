@@ -1,0 +1,67 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_about_bot
+  - about_creator
+  - thanks
+  - about_luke_story
+  - lukes_interests
+  - experience
+  - bread_experience
+  - acp_experience
+  - cardinal_experience
+  - retail_experience
+  - nonit_experience
+  - start_session
+
+actions:
+  - action_greet_user
+
+responses:
+  utter_greet:
+  - text: "Hello! How can I assist you today?"
+
+  utter_goodbye:
+  - text: "Goodbye! Have a great day!"
+
+  utter_about_bot:
+  - text: "I am an AI assistant, trained to help you with various tasks and answer your questions."
+
+  utter_about_creator:
+  - text: "My creator is Luke Kahlor, an IT Professional with a passion for exciting new technology! Like Artifical Intelligence. You can ask about his past or life story, or his work experience!"
+
+  utter_thanks:
+  - text: "You're welcome!"
+
+  utter_luke_story:
+  - text: "Luke is a native Ohioan with a passion for music, technology, and all things weird. He grew up with both parents, who moved a few times in his early life before settling in the central Ohio region when Luke was 9 years old. Luke has long since held a passion for technology, often bugging his parents to go to the Central Ohio Science Institute (COSI) computer lab to play with their macines. Soon after, his parents bought him their first computer an old HP Pentium II with a dial up connection. Luke quickly grew to love and break the machine often, often fixing it himself by looking up fixes at his local library.  Luke's first exposure to Unix was via a shell account and Luke spent endless hours playing games and playing within a Unix mainframe till sadly that shell account provider was shut down.  Luke never gave up his passion for technology over the years, finding himself fascinated by machines and computation.  Luke is an Autodidact, a self teacher and life long student of all things, all the skills he has are from personal interest and self investment. You can asked about his interests, education, and projects for more details!"
+
+  utter_luke_interests:
+  - text: "Test interests"
+
+  utter_experience:
+  - text: "Test Experience"
+
+  utter_bread_experience:
+  - text: "Test bread experience"
+
+  utter_acp_experience:
+  - text: "Test acp experience"
+
+  utter_cardinal_experience:
+  - text: "Test cardinal experience"
+
+  utter_retail_experience:
+  - text: "Test retail experience"
+
+  utter_nonit_experience:
+  - text: "Test nonit experience"
+
+  utter_greet1:
+  - text: "Hello! How can I help you today?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
